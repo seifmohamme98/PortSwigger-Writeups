@@ -3,7 +3,7 @@
 
 - **Difficulty:** APPRENTICE
 - **Category:** XSS
-- **Lab URL:** [Lab: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data | Web Security Academy](https://portswigger.net/web-security/cross-site-scripting/reflected/lab-html-context-nothing-encoded)
+- **Lab URL:** [Lab: Reflected XSS into HTML context with nothing encoded](https://portswigger.net/web-security/cross-site-scripting/reflected/lab-html-context-nothing-encoded)
 - **Date Solved:** 25/8/2026
 - **Tool useed:** BurpSuite
 
@@ -13,39 +13,37 @@ Found a Reflected XSS vulnerability in the search field. Injected a JavaScript p
 
 ## Exploitation Steps
 1. First, I wanted to confirm whether the search field reflects user input. I tried entering a random value, for example "seif", and checked the response. Using the browser's Inspect tool, I noticed that the input was being reflected back in the page.
-![[NTI/XSS/Reflected XSS into HTML context with nothing encoded/Img/image.png]]
-
-![[NTI/XSS/Reflected XSS into HTML context with nothing encoded/Img/image1.png]]
-
+![Search field reflecting user input](Img/image.png)
+![Inspecting the reflected input in HTML](Img/image1.png)
 2. Next, I decided to capture the traffic using Burp Suite:
 - Burp → Intercept on
 - Searched again using "seif" to capture the request.
 
-![[Pasted image 20260829055246.png]]
+![Intercepting the search request in Burp](Img/Pasted%20image%2020260829055246.png)
 
 3. I checked the captured traffic and sent it to Repeater:
 
 - Right-click on the request → Send to Repeater
 
-![[image 2.png]]
+![Sending request to Repeater](Img/image_2.png)
 
 4. Now, I opened Repeater and tried injecting a payload, for example:
 `<script>alert(1)</script>`
 
-![[Pasted image 20260829055652.png]]
+![Injecting script payload in Repeater](Img/Pasted%20image%2020260829055652.png)
 
 Seif → <script>alert(1)</script> → Send
 
-![[image 4.png]]
+![Response reflecting the payload unencoded](Img/image_4.png)
 
 5. After confirming the payload works, I tried sending an alert to display "Hacked":
 `Intercept → Seif → Forward`
 
-![[image 5.png]]
+![Forwarding the request with the payload](Img/image_5.png)
 
 **And with that, the vulnerability was successfully exploited.**
 
-![[6.png]]
+![Alert popup confirming successful XSS exploitation](Img/6.png)
 
 ## Impact 
 
