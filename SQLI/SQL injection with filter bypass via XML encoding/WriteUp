@@ -1,3 +1,11 @@
+## Metadata
+
+- **Difficulty:** PRACTITIONER
+- **Category:** SQL Injection
+- **Lab URL:** [Lab: SQL injection with filter bypass via XML encoding](https://portswigger.net/web-security/sql-injection/lab-sql-injection-with-filter-bypass-via-xml-encoding)
+- **Date Solved:** 25/8/2026
+- **Tool useed:** BurpSuite
+
 # SQL injection with filter bypass via XML encoding
 
 ## Vulnerability Summary
@@ -8,7 +16,7 @@ The store filtering feature is vulnerable to SQL injection through the storeId p
 
 - I selected a product, intercepted the request in Burp, and sent it to Repeater to work with it more easily.
 - I noticed the request body had a `storeId` parameter inside XML tags. To check if it was being evaluated as part of a query rather than just treated as a literal value, I compared the response for `<storeId>2</storeId>` against `<storeId>1+1</storeId>`. Both returned the same result (182), which told me the value was actually being calculated by the database, not just matched as a string.
-![[4.bmp]]![storeId=2 request and response showing 182 units](Img/4.bmp)
+![storeId=2 request and response showing 182 units](Img/4.bmp)
 
 ![storeId=1+1 request and response showing same 182 units](Img/5.bmp)
 
