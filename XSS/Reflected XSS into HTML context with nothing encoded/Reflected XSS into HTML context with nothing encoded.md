@@ -25,7 +25,7 @@ Found a Reflected XSS vulnerability in the search field. Injected a JavaScript p
 
 - Right-click on the request → Send to Repeater
 
-![Sending request to Repeater](Img/image_2.png)
+![Sending request to Repeater](Img/image%202.png)
 
 4. Now, I opened Repeater and tried injecting a payload, for example:
 `<script>alert(1)</script>`
@@ -34,12 +34,12 @@ Found a Reflected XSS vulnerability in the search field. Injected a JavaScript p
 
 Seif → <script>alert(1)</script> → Send
 
-![Response reflecting the payload unencoded](Img/image_4.png)
+![Response reflecting the payload unencoded](Img/image%204.png)
 
 5. After confirming the payload works, I tried sending an alert to display "Hacked":
 `Intercept → Seif → Forward`
 
-![Forwarding the request with the payload](Img/image_5.png)
+![Forwarding the request with the payload](Img/image%205.png)
 
 **And with that, the vulnerability was successfully exploited.**
 
