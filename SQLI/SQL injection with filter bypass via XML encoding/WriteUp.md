@@ -20,8 +20,7 @@ The store filtering feature is vulnerable to SQL injection through the storeId p
 
 ![Photo](Img/4.png)
 
-![Photo](Img/5_.png)
-![[5 1.png]]
+![Photo](Img/51.png)
 
 - Next step was figuring out the number of columns in the original query using `UNION SELECT NULL`, but this got blocked with an "Attack detected" response — meaning there's a WAF filtering the request before it reaches the query.
 
