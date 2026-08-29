@@ -1,3 +1,10 @@
+## Metadata
+
+- **Difficulty:** PRACTITIONER
+- **Category:** SQL Injection
+- **Lab URL:** [Lab: SQL injection vulnerability allowing login bypass](https://portswigger.net/web-security/sql-injection/examining-the-database/lab-querying-database-version-oracle)
+- **Date Solved:** 25/8/2026
+- **Tool useed:** BurpSuite
 
 ## Vulnerability Summary
 
