@@ -30,12 +30,12 @@ The product category filter is vulnerable to SQL injection. Using a UNION-based 
 - This time the response came back as 200 OK with no errors, confirming the original query returns exactly 4 columns
 
 before: 
-![Photo](Img/Pasted%image%20260830082723.png)
-![[Pasted image 20260830082723.png]]
+
+![Products page before injection](Img/Pasted%20image%2020260830082723.png)
 
 After:
 
-![[Pasted image 20260830082603.png]]
+![Lab solved with UNION SELECT NULL,NULL,NULL payload](Img/Pasted%20image%2020260830082603.png)
 
 ## Impact
 
@@ -45,4 +45,3 @@ After:
 ## What I Learned
 - I learned the systematic approach for finding the column count in a UNION attack, starting with one NULL and incrementally adding more until the error disappears, rather than guessing randomly.
 - This lab made it clear why NULL specifically is used for this test: it's compatible with virtually any column data type, so it won't cause a type-mismatch error even before the column count is correct.
-- 
