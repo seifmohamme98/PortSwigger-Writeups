@@ -7,27 +7,30 @@ The product category filter is vulnerable to SQL injection. Using a UNION-based 
 
 1. I intercepted a request in Burp while browsing the "Tech gifts" category, which showed the category parameter being sent in the URL: `GET /filter?category=Tech+gifts`
 2. Since the goal here was specifically to find the number of columns, I moved straight into testing with `UNION SELECT NULL` payloads rather than doing any separate probing step first.
-![[Pasted image 20260830083442.png]]
+
+![Photo](Img/Pasted%20image%2020260830083442.png)
 
 ## Exploitation Steps
 
 1. I sent the request to Repeater
 2. started testing with a single NULL
 
-![[Pasted image 20260830083649.png]]
+![Photo](Img/Pasted%20image%2020260830083649.png)
 
 - This returned a 500 Internal Server Error, meaning the original query returns more than one column
 3. I added a Tech+gifts'+UNION+SELECT+NULL,NULL
 
-![[Pasted image 20260830083920.png]]
+![Testing with two NULLs - 500 error](Img/Pasted%20image%2020260830083920.png)
 
 - Still got a 500 Internal Server Error, so I kept going.
 4. I added a Tech+gifts'+UNION+SELECT+NULL,NULL,NULL
-![[Pasted image 20260830084147.png]]
+  
+![Testing with three NULLs - 200 OK success](Img/Pasted%20image%2020260830084147.png)
 
 - This time the response came back as 200 OK with no errors, confirming the original query returns exactly 4 columns
 
 before: 
+![Photo](Img/Pasted%image%20260830082723.png)
 ![[Pasted image 20260830082723.png]]
 
 After:
