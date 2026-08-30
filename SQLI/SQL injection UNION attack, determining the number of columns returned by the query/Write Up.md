@@ -1,3 +1,11 @@
+## Metadata
+
+- **Difficulty:** PRACTITIONER
+- **Category:** SQL Injection
+- **Lab URL:** [Lab: SQL injection UNION attack, determining the number of columns returned by the query](https://portswigger.net/web-security/learning-paths/sql-injection/sql-injection-determining-the-number-of-columns-required/sql-injection/union-attacks/lab-determine-number-of-columns)
+- **Date Solved:** 30/8/2026
+- **Tool useed:** BurpSuite
+
 ## Vulnerability Summary
 
 The product category filter is vulnerable to SQL injection. Using a UNION-based attack, it's possible to determine the exact number of columns returned by the underlying query, which is the first step toward extracting data from other tables.
