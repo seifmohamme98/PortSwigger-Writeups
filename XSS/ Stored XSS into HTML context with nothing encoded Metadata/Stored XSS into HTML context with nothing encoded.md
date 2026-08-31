@@ -14,10 +14,10 @@ The blog comment functionality is vulnerable to Stored XSS. User input submitted
 2. Looking at the page, the comment section stood out as the perfect spot for this — comments get stored and displayed to every visitor.
 3. I went with a straightforward JavaScript payload: `<script>alert("Hacked")</script>`.
 4. I filled the rest of the fields (name, email, website) with random values, just to get past the form validation, then submitted the comment.
-![[Pasted image 20260831090532.png]]
+![Comment form filled with script payload](Img/Pasted%20image%2020260831090532.png)
 
 5. Sure enough, the payload got stored and executed successfully the alert popped up confirming the script ran.
-![[Pasted image 20260831090555.png]]
+![Alert popup confirming stored XSS execution](Img/Pasted%20image%2020260831090555.png)
 
 ## Impact
 - Since the payload is stored server-side, it doesn't require sending a crafted link to a specific victim  it just needs someone to visit the blog post, making this far more dangerous than a reflected XSS.
